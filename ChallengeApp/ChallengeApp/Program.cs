@@ -1,72 +1,45 @@
-﻿int number = 02059;
-string numberAsString = number.ToString();
-char[] letters = numberAsString.ToArray();
+﻿using ConsoleApp;
 
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+var user1 = new Employe("Stefan", "Mucha", "Lat 30");
+var user2 = new Employe("Jan", "Tyczka", "Lat 55");
+var user3 = new Employe("Anna", "Fantik", "Lat 25");
+
+user1.AddScores(5);
+user1.AddScores(5);
+user1.AddScores(5);
+user1.AddScores(5);
+user1.AddScores(5);
+
+user2.AddScores(10);
+user2.AddScores(10);
+user2.AddScores(10);
+user2.AddScores(10);
+user2.AddScores(10);
+
+user3.AddScores(2);
+user3.AddScores(3);
+user3.AddScores(8);
+user3.AddScores(6);
+user3.AddScores(1);
 
 
-
-
-foreach (char letter in letters)
+List<Employe> users = new List<Employe>()
 {
-    if (letter == '0')
+  user1,user2,user3
+
+};
+int MaxResult = -1;
+Employe UserWithMaxResult = null;
+foreach (var user in users)
+{
+    if (user.Scores > MaxResult)
     {
-        counter0++;
+        MaxResult = user.Scores;
+        UserWithMaxResult = user;
     }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
-    }
+
+
 }
-Console.WriteLine($" Mój numer to 02059");
-Console.WriteLine($" 0 jest 2");
-Console.WriteLine($" 1 jest 0");
-Console.WriteLine($" 2 jest 1");
-Console.WriteLine($" 3 jest 0");
-Console.WriteLine($" 4 jest 0");
-Console.WriteLine($" 5 jest 2");
-Console.WriteLine($" 6 jest 0");
-Console.WriteLine($" 7 jest 0");
-Console.WriteLine($" 8 jest 0");
-Console.WriteLine($" 9 jest 1");
+Console.WriteLine($"Najlepszy pracownik " +
+    $"{UserWithMaxResult.name} {UserWithMaxResult.surname}" +
+    $" {UserWithMaxResult.age}" + $" posiada {UserWithMaxResult.Scores} Punktów");
