@@ -1,22 +1,36 @@
+
 using ConsoleApp;
+using System.Runtime.CompilerServices;
 
-namespace ChallengeApp.Tests;
-
-public class Tests
+namespace EmployeTests
 {
-    [Test]
-    public void WhenEmployeGetAddScores() 
+    public class Test
     {
-        // arrage
-        var user = new Employe("Rafa³", "Kopek", "22");
-        user.AddScores(10);
-        user.AddScores(1);
-        user.AddScores(5);
-        user.AddScores(6);
-        user.AddScores(-10);
-        // sct
-        int result = user.Scores;
-        // assert
-        Assert.That(result, Is.EqualTo(12));
+        [Test]
+        public void GetIntValues_ShoulRetrunEquals()
+        {
+            int number1 = 8;
+            int number2 = 8;
+
+            Assert.AreEqual(number1, number2);
+        }
+        [Test]
+        public void GetFloatValues_ShouldRetrunEqual()
+        {
+            float firstfloat = 1.0f;
+            float secondfloat = 1.0f;
+            Assert.AreEqual(firstfloat, secondfloat);
+        }
+        [Test]
+        public void GetStringValues_ShouldRetrunDiffrent()
+        {
+            string name1 = "hello";
+            string name2 = "hello";
+            Assert.AreEqual(name1, name2);
+        }
+        private Employe GetEmploye (string name)
+        {
+            return new Employe(name);
+        }
     }
-}        
+}

@@ -1,8 +1,10 @@
 ﻿namespace ConsoleApp
 {
-    internal class Employe
+    public class Employe
     {
         private List<int> scores = new List<int>();
+        private string v;
+
         public string name { get; private set; }
         public string surname { get; private set; }
 
@@ -22,9 +24,15 @@
             this.surname = surname;
             this.age = age;
         }
+
+        public Employe(string v)
+        {
+            this.v = v;
+        }
+
         public void AddScores(int score)
         {
             scores.Add(score);
         }
     }
-}}
+}
