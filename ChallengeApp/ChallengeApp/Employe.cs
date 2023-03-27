@@ -1,38 +1,77 @@
-﻿namespace ConsoleApp
+﻿namespace ChallengeApp
 {
-    public class Employe
+    public class Employee
     {
-        private List<int> scores = new List<int>();
-        private string v;
+        private List<float> grades = new List<float>();
 
-        public string name { get; private set; }
-        public string surname { get; private set; }
-
-        public string age { get; private set; }
-        public int Scores
+        public Employee(string name, string surname)
         {
-            get
-            {
-                return this.scores.Sum();
+            this.Name = name;
+            this.Surname = surname;
+        }
 
+        public string Name { get; private set; }
+
+        public string Surname { get; private set; }
+
+        public void AddGrade(float grade)
+        {
+            // 3.33
+            // 3
+            int valueInInt = (int)grade;
+            float f = valueInInt;
+
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else 
+            {
+                Console.WriteLine("invalid grade value");
+            }
+        }
+
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else 
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+        public void AddGrade(double grade) 
+        {
+            float valueInIntFloat = (float)grade;
+            this.grades.Add(valueInIntFloat);
+        }
+        public void AddGrade(long grade) 
+        { 
+            float valueInIntLong = (float)grade;
+            this.grades.Add(valueInIntLong);
+        }
+
+
+        public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in this.grades)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
             }
 
-        }
-        public Employe(string name, string surname, string age)
-        {
-            this.name = name;
-            this.surname = surname;
-            this.age = age;
-        }
+            statistics.Average = statistics.Average / this.grades.Count;
 
-        public Employe(string v)
-        {
-            this.v = v;
-        }
 
-        public void AddScores(int score)
-        {
-            scores.Add(score);
+            return statistics;
         }
     }
 }
