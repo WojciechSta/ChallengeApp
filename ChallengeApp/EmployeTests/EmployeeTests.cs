@@ -5,20 +5,29 @@ namespace ChalllengeApp.Tests
     public class EmployeeTests
     {
         [Test]
-        public void ResoultStatistics_ShouldReturnMinMaxAverage()
+        public void EmployeeCheckPointsLetterChar()
         {
             //arange
-            var employee = new Employee("Jan", "Tyczka");
-            employee.AddGrade(4);
-            employee.AddGrade(2);
-            employee.AddGrade(6);
+            var employee = new Employee("Jan","Tyczka");
+            employee.AddGrade('a');
+            employee.AddGrade('b');
+            employee.AddGrade('c');
             //act
             var statistics = employee.GetStatistics();
             //assert
-            Assert.AreEqual(2, statistics.Min);
-            Assert.AreEqual(6, statistics.Max);
-            Assert.AreEqual(4, statistics.Average);
-            Assert.AreNotEqual(statistics.Min, statistics.Max);
+            Assert.AreEqual('A', statistics.AverageLetter);
+
+
+        }
+        [Test]
+        public void EmployeeCheckPointsLetterString() 
+        {
+            var employee = new Employee("Jan", "Tyczka");
+            employee.AddGrade("65");
+            employee.AddGrade("20");
+            employee.AddGrade("40");
+            var statistics = employee.GetStatistics();
+            Assert.AreEqual('C', statistics.AverageLetter);
         }
     }
 }
