@@ -4,12 +4,13 @@ namespace ChallengeApp
 {
     public class Employee
     {
+
         private List<float> grades = new List<float>();
 
         public Employee(string name, string surname)
         {
             this.Name = name;
-            this.Surname = surname;
+            this.Surname = surname; 
         }
 
         public string Name { get; private set; }
@@ -30,7 +31,8 @@ namespace ChallengeApp
             }
             else 
             {
-                Console.WriteLine("invalid grade value");
+                throw new Exception("Grade value should be between 0 and 100");
+                //Console.WriteLine("invalid grade value");
             }
         }
         public void AddGrade(int grade)
@@ -64,8 +66,7 @@ namespace ChallengeApp
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong Letter");
-                    break;
+                    throw new Exception("Wrong Letter");
             }
         }
 
@@ -77,7 +78,8 @@ namespace ChallengeApp
             }
             else 
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("Invalid grade value, only A-E and numercial allowed");
+               
             }
         }
         public void AddGrade(double grade) 
@@ -98,7 +100,7 @@ namespace ChallengeApp
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
-
+            
             foreach (var grade in this.grades)
             {
                 if (grade >= 0) 
