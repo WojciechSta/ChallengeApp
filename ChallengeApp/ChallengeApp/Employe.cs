@@ -1,19 +1,32 @@
 ﻿using NPOI.XWPF.UserModel;
+using System.Drawing.Text;
 
 namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
 
         private List<float> grades = new List<float>();
+        private string v;
 
-        public Employee(string name, string surname)
+        public Employee(string name, string surname, char sex)
+            : base(name, surname, sex)
         {
-            this.Name = name;
-            this.Surname = surname; 
+           
         }
 
-        public string Name { get; private set; }
+        public Employee(string name,string surname)
+            : base(name,surname)
+        {
+            
+        }
+
+        public Employee(string name) 
+            : base(name) 
+        {
+        
+        }
+
 
         public string Surname { get; private set; }
         public int a { get; private set; }
