@@ -1,68 +1,48 @@
 ﻿namespace ChallengeApp
 {
-    public class Suprvisior : IEmployee
+    public class Supervisor : IEmployee
     {
         private List<float> grades = new List<float>();
-        private string Age;
-        private object scoresSupervisior;
-        private string grade;
-
-        public Suprvisior(string Name, string surname, string age) 
+        public Supervisor(string name, string surname, string age)
         {
-            this.name = Name;
-            this.surname = Surname;
-            this.age = Age;
+            this.Name = name;
+            this.Surname = surname;
+            this.Age = age;
         }
-        public string name { get; private set; }
-        public string surname { get; private set; }
-        public string age { get; private set; }
-        public void AddScore(float grade) 
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
+        public string Age { get; private set; }
+
+        public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
             }
-            else 
+            else
             {
-              throw new Exception("Invalid grade value");
+                throw new Exception("invalid grade value");
             }
-        }
-        public string Name => throw new NotImplementedException();
-
-        public string Surname => throw new NotImplementedException();
-
-        public void AddGrade(float grade)
-        {
-            throw new NotImplementedException();
         }
 
         public void AddGrade(double grade)
         {
-            throw new NotImplementedException();
+            float valueInFloat = (float)grade;
+            this.AddGrade(valueInFloat);
         }
 
         public void AddGrade(int grade)
         {
-            throw new NotImplementedException();
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
         }
-
         public void AddGrade(char grade)
         {
             throw new NotImplementedException();
         }
-
-        public Statistics GetStatistics()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddGrade(string grade)
         {
-            throw new NotImplementedException();
-        }
 
-        public void AddGrage(string grade)
-        {
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrade(result);
@@ -121,12 +101,13 @@
                 }
             }
         }
-        public Statistics AverageValue()
+        public Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
+
             foreach (var grade in this.grades)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
@@ -153,7 +134,6 @@
                     break;
             }
             return statistics;
-
         }
     }
 }
